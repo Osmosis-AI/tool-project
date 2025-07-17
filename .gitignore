@@ -1,0 +1,5 @@
+venv/
+todo.plan
+.env
+output/
+*/__pycache__/
