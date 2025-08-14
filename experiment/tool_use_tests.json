@@ -1,0 +1,61 @@
+
+    {
+        "browsing": {
+            # Basic tool access tests
+            "What is the current weather in New York City?": "The response should use AccuWeather MCP to get current weather conditions for NYC.",
+            "Who is the best basketball player of all time?": "The response should use some mcp tool to find the best basketball player of all time.",
+            "How expensive is a bag of Doritos right now?": "The response should use some mcp tool to find the price of a bag of Doritos.",
+            "What is the national debt as it stands right now?": "The response should use some mcp tool to find the national debt.",
+            "Where is the cheapest flight from new york to anywhere in the world?": "The response should use some mcp tool to find the cheapest flight from new york to anywhere in the world.",
+            # Complex synthesis tests (existing)
+            "find me the best rated wireless headphones under $200 on amazon": "The response should use Amazon Product Search MCP to find highly-rated wireless headphones under $200, providing specific product recommendations with ratings and prices.",
+            "Search for the book 'A Princess of Mars' by Edgar Rice Burroughs on Wikipedia. What is the name of the protagonist's companion?": "The response should use web browsing to find the Wikipedia page for 'A Princess of Mars' and extract the name of the protagonist's companion.",
+            "I need to plan a camping trip to Yellowstone National Park next month. Find me: 1) The current weather forecast and typical weather patterns, 2) Research recent scientific papers about wildlife behavior in Yellowstone, 3) Find camping gear recommendations on Amazon (tent, sleeping bag, hiking boots) under $500 total, and 4) Look up park regulations and best camping spots on Wikipedia. Synthesize this into a comprehensive camping plan.": "The response should use multiple MCP servers: AccuWeather for weather data, arXivPaper for scientific research on Yellowstone wildlife, Amazon for camping gear recommendations with budget constraints, Wikipedia for park information, and a search engine for additional park regulations. The model should synthesize all information into a coherent camping plan.",
+            "Compare the academic consensus on climate change impacts on coral reefs with current consumer attitudes toward eco-friendly products. Find 1) Recent peer-reviewed papers on coral reef bleaching and climate change from arXiv, 2) Use a search engine to search for recent surveys on consumer eco-consciousness, 3) Find the best-selling eco-friendly products on Amazon, and 4) Research the Great Barrier Reef's current status on Wikipedia. Create a comprehensive analysis connecting scientific findings to market trends.": "The response should demonstrate complex information synthesis by using arXivPaper for scientific research, a search engine for consumer behavior data, Amazon for market trends, and Wikipedia for current environmental status. The model should create connections between scientific evidence and consumer behavior patterns.",
+            "Investigate the relationship between renewable energy adoption and economic growth. 1) Search for recent academic papers on renewable energy economics, 2) Use a search engine to find current global renewable energy statistics and government policies, 3) Look up major renewable energy companies and their stock performance on financial sites through web browsing, 4) Find renewable energy investment products on Amazon (solar panels, energy monitoring devices), and 5) Research specific country case studies on Wikipedia (Denmark, Costa Rica, etc.). Provide a comprehensive analysis with policy recommendations.": "The response should demonstrate advanced analytical thinking by combining academic research (arXivPaper), current data (a search engine), market analysis (web browsing), consumer products (Amazon), and case studies (Wikipedia). The model should synthesize complex economic and environmental data into actionable insights.",
+        },
+        "info_gathering": {
+            # Basic tool access tests
+            "List my GitHub repositories": "The response should use GitHub MCP to list the user's repositories with basic information like name and description.",
+            "Show me the first 5 Linear issues": "The response should use Linear MCP to retrieve and display the first 5 issues with their titles and status.",
+            "List the first 5 emails in my Gmail inbox": "The response should use Google Toolbox MCP to access Gmail and show the first 5 email subjects and senders.",
+            "Show me recent messages from my Slack workspace": "The response should use Slack MCP to retrieve and display recent messages from available channels.",
+            "List my Notion pages": "The response should use Notion MCP to show available pages and databases.",
+            # Complex integration tests (existing)
+            "can you list the files in my google drive? and if there exists a file identical to any in tanderson1299320's repository jSpreed let me know": "The response should use Google Drive MCP to list files and GitHub MCP to access the jSpreed repository, then compare files to identify any matches between the two locations.",
+            "Based on the content of the files in the 'test_files' directory, can you identify which file is most likely to be a dataset of chemical elements and then find the discoverer of the first metal listed with a null molar heat?": "The response should use file system tools to list and read files in the 'test_files' directory, identify the JSON file with chemical elements, parse it, and find the requested information.",
+            "There is a discussion in slack about adding features to the golang speedreader. Can you find that discussion and summarize the features that are being requested?": "The response should use Slack MCP to search for discussions about the 'golang speedreader' and summarize the requested features.",
+            "There is an issue in our github repo about enriching the readme of the golang speedreader. Can you find it and tell me who is assigned to it?": "The response should use GitHub MCP to find the specified issue in the repository and identify the assignee.",
+            "Can you compare all the files in my local test_files directory with the files in my Google Drive root folder and tell me which files exist in both locations, which are only local, and which are only in Google Drive? For any files that exist in both locations, check if their sizes or modification dates differ.": "The response should use file system tools to list and analyze files in the local 'test_files' directory, use Google Drive MCP to list files in the Drive root folder, then perform a comprehensive comparison of file names, sizes, and timestamps between the two locations.",
+        },
+        "programming": {
+            # Basic tool access tests
+            "List the files in the test_files directory": "The response should use filesystem MCP to list the contents of the test_files directory.",
+            "Execute a simple Python script that prints 'Hello World'": "The response should use Python code execution MCP to run a basic print statement.",
+            "Fetch the content from https://httpbin.org/json": "The response should use web fetch MCP to retrieve JSON data from the test endpoint.",
+            "Access the jSpreed repository on GitHub and show me the README": "The response should use GitHub MCP to access the specified repository and display README content.",
+            "Search Context7 for documentation about 'React hooks'": "The response should use Context7 MCP to search for React hooks documentation.",
+            # Complex programming tasks (existing)
+            "implement the changes to our go speedreader program at https://raw.githubusercontent.com/tanderson1299320/jSpreed/refs/heads/main/main.go specified in our linear": "The response should use GitHub MCP to access the Go code, Slack MCP or Linear-related tools to find specifications, and provide specific code implementation changes.",
+            "re-write the go speedreader program at https://raw.githubusercontent.com/tanderson1299320/jSpreed/refs/heads/main/main.go in python and while doing so address the concerns about it in the slack": "The response should use GitHub MCP to get the Go code, Slack MCP to find concerns, and provide a complete Python rewrite that addresses the identified issues.",
+            "list for me the newest possible versions of the packages in https://raw.githubusercontent.com/tanderson1299320/Gulp-AI/Osmosis-MCP-4B-demo/refs/heads/main/requirements.txt": "The response should use GitHub MCP to access the requirements.txt file and search tools to find the latest available versions of each listed package.",
+            "In the golang speedreader program at https://raw.githubusercontent.com/tanderson1299320/jSpreed/refs/heads/main/main.go, add a function for calculating WPM based on a counter that starts when the program does": "The response should use GitHub MCP to get the Go code and provide a modified Go function that calculates both WPM and accuracy.",
+            "The file 'test_files/d6059b3e-e1da-43b4-ac26-ecad2984909b.csv' contains data about LEGO parts. Can you write a python script that reads this file and creates a new CSV file containing only the parts that are black?": "The response should provide a Python script that uses a library like pandas or csv to read the specified CSV file, filter for rows where the color is 'Black', and write the result to a new CSV file.",
+        },
+        "visual": {
+            # Basic tool access tests
+            "Create a simple bar chart with sample data (apples: 10, oranges: 15, bananas: 8) with a chart mcp": "The response should contain a link to the chart",
+            "Create a simple bar chart with sample data (apples: 10, oranges: 15, bananas: 8)": "The response should contain a link to the chart",
+            "List the files in my Google Drive": "The response should use Google Toolbox MCP to access Google Drive and list available files.",
+            "Navigate to https://crouton.net using the browser": "The response should use Browserbase MCP to navigate to the example website.",
+            "Generate a simple UI component with ShadCN": "The response should use ShadCN UI MCP to create a basic UI component.",
+            # Complex visual tasks (existing)
+            "List files in my google drive then create a bar chart showing the number of types of files. Then look at the resulting image and tell me the trendline": "The response should use Google Drive MCP to list files, Chart MCP to create a bar chart of file types, and Visual Reasoning MCP to analyze the chart and describe file type distribution trends.",
+            "Graph the dates of the emails sent to my gmail using the google-toolbox. Then look at the resulting image and tell me the trendline": "The response should contain trend information about the emails in my inbox.",
+            "make a chart of computer color capabilites by year based on the data in https://en.wikipedia.org/wiki/List_of_color_palettes": "The response should use Browserbase MCP to access the Wikipedia page, extract color capability data by year, there should be a link to the chart in the response",
+            "chart the distance relation between angkor wat, the roman colosseum, and tenochtitlan": "The response should use Google Maps MCP to get location coordinates, Chart MCP to create a distance visualization (possibly a triangle chart or distance matrix), and Visual Reasoning MCP to analyze the geographic relationships.",
+            "Please take the data from 'test_files/7805912b-c8da-4134-9b54-b590f884352a.csv' and create a pie chart showing the precipitation distribution in the different boroughs of New York. Then, tell me which borough has the smallest share of precipitation.": "The response should use file system tools to read the CSV, Chart MCP to create a pie chart, and Visual Reasoning MCP to analyze the chart and identify the borough with the smallest precipitation share.",
+        }
+}
+
+ 
