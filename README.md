@@ -30,16 +30,22 @@ Run the complete experiment suite:
 python main.py
 ```
 
-## Console Output Format
 
-The console displays colored output in the format:
+1. Complete workflow:
+```bash
+  make run-battery BATTERY=test_pretrain_knowledge_with_no_mcp_servers
+  make pipeline  # Automatically processes latest results → CSV
 ```
-[exp_name] - [model_name] - [date] - [streamed_output_line]
+2. Step-by-step:
+```bash 
+  make run-battery BATTERY=test_pretrain_knowledge_with_no_mcp_servers
+  make evaluate-latest
+  make convert-latest-to-csv
 ```
-
-Example:
-```
-[browsing] - [anthropic/claude-sonnet-4] - [2024-01-15 14:30:25] - Stream: The capital of France is Paris...
+3. Manual file specification:
+```bash
+  make evaluate FILE=output/20250805_123456.json
+  make convert-to-csv FILE=output/evaluations/evaluated_20250805_123456.json OUTPUT=my_results.csv
 ```
 
 ## Output Files
@@ -66,35 +72,3 @@ Results are saved to `output/[timestamp].json` with the following structure:
   ]
 }
 ```
-
-## Experiment Configuration
-
-Edit `experiment/experiment_control.py` to modify:
-
-- **Models**: Add/remove models from `candidate_models`
-- **Queries**: Modify the `queries` array
-- **MCP Servers**: Configure MCP servers in the `mcp_servers` section
-
-## Current Experiment: "browsing"
-
-- **Models**: moonshotai/kimi-k2, anthropic/claude-sonnet-4, openai/o3
-- **MCP Servers**: context7 (via @upstash/context7-mcp)
-- **Queries**: 4 test queries covering various topics
-
-## Requirements
-
-- Python 3.7+
-- OpenRouter API key
-- Node.js (for MCP servers)
-
-## File Structure
-
-```
-osmosis-mcpoverflow/
-├── main.py                     # Entry point
-├── experiment/
-│   └── experiment_control.py   # Experiment logic and configuration
-├── output/                     # JSON result files
-├── requirements.txt            # Python dependencies
-└── README.md                   # This file
-``` # tool-project

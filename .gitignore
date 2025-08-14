@@ -1,0 +1,13 @@
+.venv/
+todo.md
+env.py
+output/
+__pycache__/
+CLAUDE.md
+GEMINI.md
+.claude/
+.DS_Store
+dataSources/
+localRun/
+.channels_cache.json
+.users_cache.json
