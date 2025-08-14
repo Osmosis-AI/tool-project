@@ -6,7 +6,6 @@ from typing import Dict, Set
 from termcolor import colored
 import colorama
 from experiment.experiment_control import test_batteries
-from env import SMITHERY_KEY, SMITHERY_PROFILE
 
 # MCP imports
 import mcp
@@ -345,12 +344,6 @@ class MCPInfoCollector:
         """Main execution method"""
         print(colored("🔍 MCP Server Information Collector", "magenta", attrs=["bold"]))
         print(colored("=" * 60, "magenta"))
-        
-        # Check environment variables  
-        if not SMITHERY_KEY or not SMITHERY_PROFILE:
-            print(colored("⚠️ Warning: SMITHERY_KEY and/or SMITHERY_PROFILE not set", "yellow"))
-            print(colored("Some MCP servers may not work without Smithery credentials.", "yellow"))
-            print()
         
         # Collect all MCP servers from test batteries
         all_servers_config = self.collect_all_mcp_servers()

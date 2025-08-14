@@ -19,8 +19,9 @@ This experiment suite tests multiple LLM models with MCP (Model Context Protocol
 
 2. **Set API Key**:
    ```bash
-   export OPENROUTER_KEY='your-openrouter-api-key-here'
+   cp env.example.py env.py
    ```
+   and populate with secret values
 
 ## Usage
 
